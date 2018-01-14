@@ -1,8 +1,6 @@
 <?php
 include_once 'connectDB.php';
 include_once 'constants.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 if (isset($_POST['username'], $_POST['email'], $_POST['pass'])) {
 
@@ -27,7 +25,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['pass'])) {
         }
         $sql->close();
     } else {
-        echo mysqli_error($mysqli); return;
+        echo "dberror"; return;
     }
  
     $sqlPrep = "SELECT user_id FROM users WHERE username = ? LIMIT 1";
@@ -43,7 +41,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['pass'])) {
         }
         $sql->close();
     } else {
-        mysqli_error(); return;
+        echo "dberror"; return;
     }
  
     // Crear una sal aleatoria.
@@ -58,7 +56,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['pass'])) {
         $sqlInsert->bind_param('ssss', $user, $email, $pass, $random_salt);
         // Ejecuta la consulta preparada.
         if (! $sqlInsert->execute()) {
-            mysqli_error(); return;
+            echo "dberror"; return;
         }else{
             echo "success"; return;
         }
