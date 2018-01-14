@@ -1,9 +1,9 @@
 <?php
 
-define("HOST", "invitacionseguracom.ipagemysql.com"); 
-define("USER", "12invsegura_"); 
-define("PASSWORD", "12invsegura");
-define("DATABASE", "12invsegura_");
+define("HOST", "127.0.0.1"); 
+define("USER", "azure"); 
+define("PASSWORD", "6#vWHD_$");
+define("DATABASE", "pricemebay");
  
 define("CAN_REGISTER", "any");
 define("DEFAULT_ROLE", "member");
