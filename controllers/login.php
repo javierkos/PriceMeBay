@@ -7,11 +7,6 @@ sec_session_start();
 if (isset($_POST['username'], $_POST['pass'])) {
     $user = $_POST['username'];
     $pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
-  /*  if (login($user, $pass,$mysqli) == true) { //Call login function
-        echo "success";
-    }else if (login($user, $pass,$mysqli) == false){
-        echo "wrong";
-    }*/
     echo login($user, $pass,$mysqli);
 }else {
     echo 'posterror';
