@@ -39,15 +39,15 @@ function login($user, $pass,$mysqli) {
                                                             $username);
                 $_SESSION['username'] = $username;
                 $_SESSION['login_string'] = hash('sha512', 
-                            $password . $user_browser);
-                return "tru"; //Logged in
+                            $pass . $user_browser);
+                return "success"; //Logged in
             }else {
-                return "wrongpass"; //Wrong password
+                return "wrong"; //Wrong password
             }
         }else {
-            return "notexist"; //User does not exist
+            return "wrong"; //User does not exist
         }
     }else{
-        return "whut";
+        return "error";
     }
 }
