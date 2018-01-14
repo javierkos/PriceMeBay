@@ -9,12 +9,16 @@ $(document).ready(function() {
             },
             success: function(data)
             {
+                alert(data);
                 if (data === 'success') {
                     window.location.replace('../list.html');
                 }
                 else if (data == 'wrong'){
                     window.location.replace('../loginPage.php?error=1');
                 }
+            },
+            error: function(data){
+                alert(data);
             }
         });
         return false; 
