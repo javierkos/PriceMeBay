@@ -1,7 +1,9 @@
 <?php
 include_once 'connectDB.php';
 include_once 'constants.php';
- 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if (isset($_POST['username'], $_POST['email'], $_POST['pass'])) {
 
     $user = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
