@@ -7,11 +7,12 @@ sec_session_start();
 if (isset($_POST['username'], $_POST['pass'])) {
     $user = $_POST['username'];
     $pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
-    if (login($user, $pass,$mysqli) == true) { //Call login function
+  /*  if (login($user, $pass,$mysqli) == true) { //Call login function
         echo "success";
     }else if (login($user, $pass,$mysqli) == false){
         echo "wrong";
-    }
+    }*/
+    echo login($user, $pass,$mysqli);
 }else {
     echo 'posterror';
 }
@@ -39,14 +40,14 @@ function login($user, $pass,$mysqli) {
                 $_SESSION['username'] = $username;
                 $_SESSION['login_string'] = hash('sha512', 
                             $password . $user_browser);
-                return true; //Logged in
+                return "tru"; //Logged in
             }else {
-                return false; //Wrong password
+                return "wrongpass"; //Wrong password
             }
         }else {
-            return false; //User does not exist
+            return "notexist"; //User does not exist
         }
     }else{
-        return false;
+        return "whut";
     }
 }
