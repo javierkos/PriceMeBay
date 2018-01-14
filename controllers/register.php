@@ -27,7 +27,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['pass'])) {
         }
         $sql->close();
     } else {
-        echo mysqli_error(); return;
+        echo mysqli_error($mysqli); return;
     }
  
     $sqlPrep = "SELECT user_id FROM users WHERE username = ? LIMIT 1";
