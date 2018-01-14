@@ -10,10 +10,10 @@ $(document).ready(function() {
             success: function(data)
             {
                 if (data === 'success') {
-                    window.location.replace('../gza/list.html');
+                    window.location.replace('../list.html');
                 }
                 else if (data == 'wrong'){
-                    window.location.replace('../gza/loginPage.php?error=1');
+                    window.location.replace('../loginPage.php?error=1');
                 }
             }
         });

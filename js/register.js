@@ -11,7 +11,7 @@ $(document).ready(function() {
             success: function(data)
             {
                 if (data === 'success') {
-                    window.location.replace('../gza/list.html');
+                    window.location.replace('../list.html');
                 }
                 else if (data == 'userrepeat'){
                     $("#errorAlert").html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">Error:</span> Username already exists');
