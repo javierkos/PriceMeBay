@@ -10,6 +10,7 @@ $(document).ready(function() {
             },
             success: function(data)
             {
+                alert(data);
                 if (data === 'success') {
                     window.location.replace('../list.html');
                 }
