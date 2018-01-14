@@ -2,6 +2,13 @@
 include_once 'connectDB.php';
 include_once 'constants.php';
  
+if ($mysqli){
+    echo "Con";
+}
+else{
+    echo "NOOO";
+}
+
 if (isset($_POST['username'], $_POST['email'], $_POST['pass'])) {
 
     $user = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
