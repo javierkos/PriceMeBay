@@ -16,10 +16,9 @@ $(document).ready(function() {
                     <div class="caption">
                         <h4 class="group inner list-group-item-heading">`
                             +parsedData[i]['title']+`</h4>
-                        <p class="group inner list-group-item-text">
-                            Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <div class="row">
+                        <p class="group inner list-group-item-text">`
+                        +parsedData[i]['itemId']+
+                        `<div class="row">
                             <div class="col-xs-12 col-md-6">
                                 <p class="cost">`
                                     +parsedData[i]['currency']+" "+parsedData[i]['price']+`</p>
