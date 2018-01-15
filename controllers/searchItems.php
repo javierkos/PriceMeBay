@@ -60,6 +60,7 @@ if ($response->ack !== 'Failure') {
         $elements[$count]['itemId'] = $item->itemId;
         $elements[$count]['currency'] = $item->sellingStatus->currentPrice->currencyId;
         $elements[$count]['price'] = $item->sellingStatus->currentPrice->value;
+        $elements[$count]['pic'] = $item->galleryURL;
         $count = $count + 1;
     }
     
