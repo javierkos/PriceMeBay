@@ -45,6 +45,8 @@ if (isset($response->errorMessage)) {
         );
     }
 }
+$elements = array();
+$count = 0;
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
         printf(
@@ -54,6 +56,7 @@ if ($response->ack !== 'Failure') {
             $item->sellingStatus->currentPrice->currencyId,
             $item->sellingStatus->currentPrice->value
         );
-        echo $item->title;
+        $elements[$count] = $item->title;
     }
+    echo json_encode($elements);
 }
