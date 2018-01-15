@@ -1,3 +1,6 @@
+//Elements per page
+numPerPage = 9;
+
 $(document).ready(function() {
     search = window.location.search.substr(1).slice(2);
     $.ajax({
@@ -11,8 +14,13 @@ $(document).ready(function() {
             //alert(data);
            var parsedData = JSON.parse(data);
            numElem = parsedData.length;
+           pageNum = 0;
             for (i = 0; i < numElem; i++) { 
-                $("#products").append(`<div class="item  col-xs-4 col-lg-4">
+                if (i % numPerPage == 0){
+                    pageNum ++;
+                    $("#pages").append('<li id="page'+pageNum+'"><a href="#"></a></li>');
+                }
+                $("#page"+pageNum).append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
                     <img class="group list-group-image" src="`+parsedData[i]['pic']+`" alt="" />
                     <div class="caption">
