@@ -10,6 +10,7 @@ $(document).ready(function() {
         {
             //alert(data);
            var parsedData = JSON.parse(data);
+           $("#contain").append('<p>Showing results for '+search+':</p>');
             for (i = 0; i < 10; i++) { 
                 $("#products").append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
