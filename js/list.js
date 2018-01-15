@@ -18,7 +18,8 @@ $(document).ready(function() {
             for (i = 0; i < numElem; i++) { 
                 if (i % numPerPage == 0){
                     pageNum ++;
-                    $("#pages").append('<li id="page'+pageNum+'"><a href="#"></a></li>');
+                    $("#products").append('<div style="display:none;" id="page'+pageNum+'"></div>');
+                    $("#pages").append('<li><a href="#">'+pageNum+'</a></li>');
                 }
                 $("#page"+pageNum).append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
