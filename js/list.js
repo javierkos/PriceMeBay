@@ -3,14 +3,14 @@ $(document).ready(function() {
         type: "POST",
         url: 'controllers/searchItems.php',
         data: {
-            username: "Hey"
+            keywords: "Hey"
         },
         success: function(data)
         {
             var parsedData = JSON.parse(data);
             for (i = 0; i < 10; i++) { 
                 $("#products").append(`<div class="item  col-xs-4 col-lg-4">
-                <div class="thumbnail" style="height:300px;">
+                <div class="thumbnail">
                     <img class="group list-group-image" src="`+parsedData[i]['pic']+`" alt="" />
                     <div class="caption">
                         <h4 class="group inner list-group-item-heading">`
