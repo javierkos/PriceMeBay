@@ -28,7 +28,7 @@ $request = new Types\FindItemsByKeywordsRequest();
 /**
  * Assign the keywords.
  */
-$request->keywords = 'Harry Potter';
+$request->keywords = filter_input(INPUT_POST, 'keywords', FILTER_SANITIZE_STRING);
 /**
  * Send the request.
  */

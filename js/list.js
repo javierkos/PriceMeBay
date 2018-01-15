@@ -1,10 +1,11 @@
 $(document).ready(function() {
-    alert(window.location.search.substr(1));
+    search = window.location.search.substr(1).slice(2);
+    alert(search);
     $.ajax({
         type: "POST",
         url: 'controllers/searchItems.php',
         data: {
-            keywords: "Hey"
+            keywords: search
         },
         success: function(data)
         {
