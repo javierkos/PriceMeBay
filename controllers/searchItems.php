@@ -58,6 +58,9 @@ if ($response->ack !== 'Failure') {
         );*/
         $elements[$count]['title'] = $item->title;
         $elements[$count]['itemId'] = $item->itemId;
+        $elements[$count]['currency'] = $item->sellingStatus->currentPrice->currencyId;
+        $elements[$count]['price'] = $item->sellingStatus->currentPrice->value;
+        $count = $count + 1;
     }
     
     echo json_encode($elements);
