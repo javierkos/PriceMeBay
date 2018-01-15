@@ -2,11 +2,10 @@
 numPerPage = 9;
 currentSelPage = 1;
 $(document).ready(function() {
-    search = decodeURIComponent(window.location.search).replace(/\+/g‌​, " ");
+    url = window.location.replace(/\+/g,' ');
+    search = decodeURI(url);
+
     alert(search);
-   
-    search = search.replace(/\+/g,' ');
-    search = search.replace(/\W/g, '')
     if (search){
         $.ajax({
             type: "POST",
@@ -75,10 +74,3 @@ $(document).on({
     ajaxStart: function() { $('#body').addClass("loading");    },
      ajaxStop: function() { $('#body').removeClass("loading"); }    
 });
-
-function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-};
