@@ -10,7 +10,7 @@ $(document).ready(function() {
             alert(data);
         },
         error: function(data){
-            alert("error:"+data);
+            alert("error:"+data[0]);
         }
     });
     
