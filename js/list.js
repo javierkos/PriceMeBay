@@ -7,10 +7,10 @@ $(document).ready(function() {
         },
         success: function(data)
         {
-            alert(data);
+            alert(data[0]);
         },
         error: function(data){
-            alert("error:"+data[0]);
+            alert("error:"+data);
         }
     });
     
