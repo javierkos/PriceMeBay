@@ -3,7 +3,7 @@ numPerPage = 9;
 currentSelPage = 1;
 $(document).ready(function() {
     search =  decodeURI(window.location.search).substr(1).slice(2);
-    search = getUrlParameter('s');
+    search = decodeURIComponent("Is+it+friday+the+13th%3F").replace(/\+/g‌​, " ");
     alert(search);
    
     search = search.replace(/\+/g,' ');
