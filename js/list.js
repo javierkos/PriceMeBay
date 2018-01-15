@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    alert($.url.attr('s'));
     $.ajax({
         type: "POST",
         url: 'controllers/searchItems.php',
