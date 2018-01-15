@@ -29,7 +29,7 @@ $(document).ready(function() {
                         $("#pages").append('<li id="pSel'+pageNum+'"><a>'+pageNum+'</a></li>');
                     }
                     $("#page"+pageNum).append(`<div class="item  col-xs-4 col-lg-4">
-                    <div class="thumbnail" style="height:200px;">
+                    <div class="thumbnail" style="height:250px;">
                         <img class="group list-group-image" style="height:120px;" src="`+parsedData[i]['pic']+`" alt="" />
                         <div class="caption">
                             <h4 class="group inner list-group-item-heading">`
