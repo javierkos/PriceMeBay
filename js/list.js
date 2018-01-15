@@ -8,8 +8,8 @@ $(document).ready(function() {
         },
         success: function(data)
         {
-            alert(data);
-         /*   var parsedData = JSON.parse(data);
+            //alert(data);
+           var parsedData = JSON.parse(data);
             for (i = 0; i < 10; i++) { 
                 $("#products").append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
@@ -18,7 +18,7 @@ $(document).ready(function() {
                         <h4 class="group inner list-group-item-heading">`
                             +parsedData[i]['title']+`</h4>
                         <p class="group inner list-group-item-text">`
-                        +parsedData[i]['itemId']+
+                        +parsedData[i]['productId']+
                         `<div class="row">
                             <div class="col-xs-12 col-md-6">
                                 <p class="cost">`
@@ -31,7 +31,7 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>`);
-            }*/
+            }
         },
         error: function(data){
             alert("error:"+data);
