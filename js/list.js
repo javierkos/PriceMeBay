@@ -52,7 +52,7 @@ $(document).ready(function() {
     });
 
     //Change page
-    $("li[id^='pSel']").click(function() {
+    $("#pages li").click(function() {
         $(this).addClass("active");
         $("#pSel"+currentSelPage).removeClass("active");
         $("#page"+currentSelPage).hide();
