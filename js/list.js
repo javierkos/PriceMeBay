@@ -42,7 +42,7 @@ $(document).ready(function() {
                 </div>
             </div>`);
             }
-            $("#page1").addClass("active");
+            $("#p1").addClass("active");
             $("#contain").prepend('<h3>Showing results for '+search+':</h3>');
         },
         error: function(data){
