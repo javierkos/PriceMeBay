@@ -2,8 +2,7 @@
 numPerPage = 9;
 currentSelPage = 1;
 $(document).ready(function() {
-    search =  decodeURI(window.location.search).substr(1).slice(2);
-    search = decodeURIComponent("Is+it+friday+the+13th%3F").replace(/\+/g‌​, " ");
+    search = decodeURIComponent(window.location.search).replace(/\+/g‌​, " ");
     alert(search);
    
     search = search.replace(/\+/g,' ');
