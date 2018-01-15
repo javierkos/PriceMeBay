@@ -2,9 +2,9 @@
 numPerPage = 9;
 currentSelPage = 1;
 $(document).ready(function() {
-    search = window.location.search.substr(1).slice(2);
+    search = findGetParameter('s');
     search = search.replace(/\+/g,' ');
-    search = search.replace(/\W/g, '')
+    search = search.replace(/\W/g, '');
     if (search){
         $.ajax({
             type: "POST",
@@ -73,3 +73,16 @@ $(document).on({
     ajaxStart: function() { $('#body').addClass("loading");    },
      ajaxStop: function() { $('#body').removeClass("loading"); }    
 });
+
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
