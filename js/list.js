@@ -10,7 +10,6 @@ $(document).ready(function() {
         {
             //alert(data);
            var parsedData = JSON.parse(data);
-           $("#contain").append('<p>Showing results for '+search+':</p>');
             for (i = 0; i < 10; i++) { 
                 $("#products").append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
@@ -33,6 +32,7 @@ $(document).ready(function() {
                 </div>
             </div>`);
             }
+            $("#contain").prepend('<h3>Showing results for '+search+':</h3>');
         },
         error: function(data){
             alert("error:"+data);
