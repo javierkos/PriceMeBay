@@ -2,7 +2,7 @@ $(document).ready(function() {
     search = window.location.search.substr(1).slice(2);
     $.ajax({
         type: "POST",
-        url: 'controllers/searchItems2.php',
+        url: 'controllers/searchItems.php',
         data: {
             keywords: search
         },
