@@ -2,9 +2,11 @@
 numPerPage = 9;
 currentSelPage = 1;
 $(document).ready(function() {
-    search = findGetParameter('s');
+    search =  decodeURI(window.location.search).substr(1).slice(2);
+    alert(search);
+   
     search = search.replace(/\+/g,' ');
-    search = search.replace(/\W/g, '');
+    search = search.replace(/\W/g, '')
     if (search){
         $.ajax({
             type: "POST",
