@@ -17,7 +17,7 @@ $service = new Services\MerchandisingService([
     'sandbox' => false
 ]);
 
-$request = new Merchandising\Types\GetSimilarItemsRequest();
+$request = new Types\GetSimilarItemsRequest();
 
 $request->maxResults = 10;
 $request->itemId = '352039451777';
