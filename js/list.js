@@ -3,7 +3,7 @@ numPerPage = 9;
 currentSelPage = 1;
 $(document).ready(function() {
     search =  decodeURI(window.location.search).substr(1).slice(2);
-    search = decodeURIComponent('s');
+    search = getUrlParameter('s');
     alert(search);
    
     search = search.replace(/\+/g,' ');
@@ -77,6 +77,9 @@ $(document).on({
      ajaxStop: function() { $('#body').removeClass("loading"); }    
 });
 
-function decodeUrlParameter(str) {
-	return decodeURIComponent((str+'').replace(/\+/g, '%20'));
-}
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
