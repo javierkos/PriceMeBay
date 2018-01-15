@@ -24,7 +24,7 @@ $(document).ready(function() {
                     }
                     $("#page"+pageNum).append(`<div class="item  col-xs-4 col-lg-4">
                     <div class="thumbnail">
-                        <img class="group list-group-image" style="heigh:90px;" src="`+parsedData[i]['pic']+`" alt="" />
+                        <img class="group list-group-image" style="height:90px;" src="`+parsedData[i]['pic']+`" alt="" />
                         <div class="caption">
                             <h4 class="group inner list-group-item-heading">`
                                 +parsedData[i]['title']+`</h4>
