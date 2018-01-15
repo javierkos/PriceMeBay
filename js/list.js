@@ -7,7 +7,7 @@ $(document).ready(function() {
         },
         success: function(data)
         {
-            alert(data.title);
+            alert(data);
         },
         error: function(data){
             alert("error:"+data);
