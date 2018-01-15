@@ -17,7 +17,7 @@ $(document).ready(function() {
                         <h4 class="group inner list-group-item-heading">`
                             +parsedData[i]['title']+`</h4>
                         <p class="group inner list-group-item-text">`
-                        +parsedData[i]['productId']+
+                        +JSON.stringify(parsedData[i]['productId'])+
                         `<div class="row">
                             <div class="col-xs-12 col-md-6">
                                 <p class="cost">`
