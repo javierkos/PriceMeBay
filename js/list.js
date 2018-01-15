@@ -10,7 +10,8 @@ $(document).ready(function() {
         {
             //alert(data);
            var parsedData = JSON.parse(data);
-            for (i = 0; i < 10; i++) { 
+           numElem = parsedData.length;
+            for (i = 0; i < numElem; i++) { 
                 $("#products").append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
                     <img class="group list-group-image" src="`+parsedData[i]['pic']+`" alt="" />
