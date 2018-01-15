@@ -49,14 +49,8 @@ $elements = array();
 $count = 0;
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
-        printf(
-            "(%s) %s: %s %.2f\n",
-            $item->itemId,
-            $item->title,
-            $item->sellingStatus->currentPrice->currencyId,
-            $item->sellingStatus->currentPrice->value
-        );
-        $elements[$count] = $item->title;
+        $elements[$count]['title'] = $item->title;
+        $elements[$count]['itemId'] = $item->itemId;
     }
     echo json_encode($elements);
 }
