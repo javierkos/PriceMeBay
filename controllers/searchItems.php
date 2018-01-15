@@ -18,7 +18,6 @@ use \DTS\eBaySDK\Finding\Enums;
 $service = new Services\FindingService([
     'credentials' => $config['sandbox']['credentials'],
     'globalId'    => Constants\GlobalIds::GB,
-    'authToken' => $config['sandbox']['authToken'],
     'apiVersion' => '1.13.0',
     'sandbox' => true
 ]);
