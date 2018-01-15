@@ -21,8 +21,8 @@ $(document).ready(function() {
             pageNum = 0;
                 for (i = 0; i < numElem; i++) { 
                     tempTitle = parsedData[i]['title'];
-                    if (tempTitle.length > 33)
-                        tempTitle = tempTitle.substring(0,30)+'...';
+                    if (tempTitle.length > 25)
+                        tempTitle = tempTitle.substring(0,22)+'...';
                     if (i % numPerPage == 0){
                         pageNum ++;
                         $("#products").append('<div style="display:none;" id="page'+pageNum+'"></div>');
