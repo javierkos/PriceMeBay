@@ -2,7 +2,7 @@
 numPerPage = 9;
 currentSelPage = 1;
 $(document).ready(function() {
-    url = window.location.replace(/\+/g,' ');
+    url = window.location.href.replace(/\+/g,' ');
     search = decodeURI(url);
 
     alert(search);
