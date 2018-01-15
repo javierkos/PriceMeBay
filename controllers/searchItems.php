@@ -4,7 +4,7 @@ ini_set('display_errors', 'On');
 
 require __DIR__.'/../vendor/autoload.php';
 
-$config = require __DIR__.'/../configuration.php';
+$config = require '/../configuration.php';
 /**
  * The namespaces provided by the SDK.
  */
