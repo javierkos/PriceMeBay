@@ -8,7 +8,8 @@ $(document).ready(function() {
         },
         success: function(data)
         {
-            var parsedData = JSON.parse(data);
+            alert(data);
+         /*   var parsedData = JSON.parse(data);
             for (i = 0; i < 10; i++) { 
                 $("#products").append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
@@ -30,7 +31,7 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>`);
-            }
+            }*/
         },
         error: function(data){
             alert("error:"+data);
