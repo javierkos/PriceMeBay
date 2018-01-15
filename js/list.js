@@ -19,7 +19,7 @@ $(document).ready(function() {
                 if (i % numPerPage == 0){
                     pageNum ++;
                     $("#products").append('<div style="display:none;" id="page'+pageNum+'"></div>');
-                    $("#pages").append('<li><a href="#">'+pageNum+'</a></li>');
+                    $("#pages").append('<li id="p'+pageNum+'"><a href="#">'+pageNum+'</a></li>');
                 }
                 $("#page"+pageNum).append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
@@ -42,6 +42,7 @@ $(document).ready(function() {
                 </div>
             </div>`);
             }
+            $("#page1").addClass("active");
             $("#contain").prepend('<h3>Showing results for '+search+':</h3>');
         },
         error: function(data){
