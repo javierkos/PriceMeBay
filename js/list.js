@@ -1,6 +1,6 @@
 //Elements per page
 numPerPage = 9;
-
+currentSelPage = 1;
 $(document).ready(function() {
     search = window.location.search.substr(1).slice(2);
     $.ajax({
@@ -19,7 +19,7 @@ $(document).ready(function() {
                 if (i % numPerPage == 0){
                     pageNum ++;
                     $("#products").append('<div style="display:none;" id="page'+pageNum+'"></div>');
-                    $("#pages").append('<li id="p'+pageNum+'"><a href="#">'+pageNum+'</a></li>');
+                    $("#pages").append('<li id="pSel'+pageNum+'"><a href="#">'+pageNum+'</a></li>');
                 }
                 $("#page"+pageNum).append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
@@ -42,13 +42,22 @@ $(document).ready(function() {
                 </div>
             </div>`);
             }
-            $("#p1").addClass("active");
+            $("#pSel1").addClass("active");
             $("#contain").prepend('<h3>Showing results for '+search+':</h3>');
         },
         error: function(data){
             alert("error:"+data);
         }
     });
+
+    //Change page
+    $('[id^="pSel"]').click(function() {
+        $(this).addClass("active");
+        $("#pSel"+currentSelPage).removeClass("active");
+        $("page"+currentSelPage).hide();
+        currentSelPage = $(this).attr('id').slice(4);
+        ("page"+currentSelPage).show();
+     });
     
 });
 
