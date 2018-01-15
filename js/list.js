@@ -3,7 +3,7 @@ numPerPage = 9;
 currentSelPage = 1;
 $(document).ready(function() {
     url = window.location.href;
-    search = unescape(url).split("?s=")[1].replace(/[^0-9a-z]/gi, '');
+    search = unescape(url).split("?s=")[1].replace(/[^\w\s]/gi, '');
 
     if (search){
         $.ajax({
