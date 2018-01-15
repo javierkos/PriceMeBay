@@ -2,13 +2,14 @@ $(document).ready(function() {
     search = window.location.search.substr(1).slice(2);
     $.ajax({
         type: "POST",
-        url: 'controllers/searchItems.php',
+        url: 'controllers/searchItems2.php',
         data: {
             keywords: search
         },
         success: function(data)
         {
-           var parsedData = JSON.parse(data);
+            alert(data);
+           /*var parsedData = JSON.parse(data);
             for (i = 0; i < 10; i++) { 
                 $("#products").append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
@@ -17,7 +18,7 @@ $(document).ready(function() {
                         <h4 class="group inner list-group-item-heading">`
                             +parsedData[i]['title']+`</h4>
                         <p class="group inner list-group-item-text">`
-                        +JSON.stringify(parsedData[i]['productId'])+
+                        +parsedData[i]['itemId']+
                         `<div class="row">
                             <div class="col-xs-12 col-md-6">
                                 <p class="cost">`
@@ -30,7 +31,7 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>`);
-            }
+            }*/
         },
         error: function(data){
             alert("error:"+data);

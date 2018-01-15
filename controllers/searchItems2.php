@@ -17,14 +17,12 @@ $service = new Services\FindingService([
     'sandbox' => false
 ]);
 
-$request = new Types\FindItemsByProductRequest();
+$request = new Merchandising\Types\GetSimilarItemsRequest();
 
-$productId = new Types\ProductId();
-$productId->value = '352039451777';
-$productId->type = 'ReferenceID';
-$request->productId = $productId;
+$request->maxResults = 10;
+$request->itemId = '352039451777';
 
-$response = $service->findItemsByProduct($request);
+$response = $service->getSimilarItems($request);
 
 if (isset($response->errorMessage)) {
     foreach ($response->errorMessage->error as $error) {

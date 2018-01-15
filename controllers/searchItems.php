@@ -42,7 +42,6 @@ if ($response->ack !== 'Failure') {
         $elements[$count]['currency'] = $item->sellingStatus->currentPrice->currencyId;
         $elements[$count]['price'] = $item->sellingStatus->currentPrice->value;
         $elements[$count]['pic'] = $item->galleryURL;
-        $elements[$count]['productId'] = $item->productId;
         $count = $count + 1;
     }
     
