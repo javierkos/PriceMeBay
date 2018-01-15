@@ -8,7 +8,6 @@ $(document).ready(function() {
         },
         success: function(data)
         {
-            alert(data);
            var parsedData = JSON.parse(data);
             for (i = 0; i < 10; i++) { 
                 $("#products").append(`<div class="item  col-xs-4 col-lg-4">
