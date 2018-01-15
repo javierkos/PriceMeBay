@@ -1,6 +1,5 @@
 $(document).ready(function() {
     search = window.location.search.substr(1).slice(2);
-    alert(search);
     $.ajax({
         type: "POST",
         url: 'controllers/searchItems.php',
