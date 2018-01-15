@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    alert($.url.attr('s'));
+    alert(window.location.search.substr(1));
     $.ajax({
         type: "POST",
         url: 'controllers/searchItems.php',
