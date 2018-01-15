@@ -17,6 +17,9 @@ $(document).ready(function() {
             numElem = parsedData.length;
             pageNum = 0;
                 for (i = 0; i < numElem; i++) { 
+                    tempTitle = parsedData[i]['title'];
+                    if (tempTitle.length > 20)
+                        tempTitle = tempTitle.substring(0,20);
                     if (i % numPerPage == 0){
                         pageNum ++;
                         $("#products").append('<div style="display:none;" id="page'+pageNum+'"></div>');
@@ -24,7 +27,7 @@ $(document).ready(function() {
                     }
                     $("#page"+pageNum).append(`<div class="item  col-xs-4 col-lg-4">
                     <div class="thumbnail">
-                        <img class="group list-group-image" style="height:90px;" src="`+parsedData[i]['pic']+`" alt="" />
+                        <img class="group list-group-image" style="height:120px;" src="`+parsedData[i]['pic']+`" alt="" />
                         <div class="caption">
                             <h4 class="group inner list-group-item-heading">`
                                 +parsedData[i]['title']+`</h4>
