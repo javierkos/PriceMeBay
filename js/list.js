@@ -43,6 +43,7 @@ $(document).ready(function() {
             </div>`);
             }
             $("#pSel1").addClass("active");
+            $("#page1").show();
             $("#contain").prepend('<h3>Showing results for '+search+':</h3>');
         },
         error: function(data){
