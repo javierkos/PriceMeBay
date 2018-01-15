@@ -52,14 +52,14 @@ $(document).ready(function() {
     });
 
     //Change page
-     $("#pages li").on('click',function(){
+    $('#pages').on('click', 'li', function() {
         $(this).addClass("active");
         $("#pSel"+currentSelPage).removeClass("active");
         $("#page"+currentSelPage).hide();
         alert($(this).attr('id').slice(4));
         currentSelPage = $(this).attr('id').slice(4);
         $("#page"+currentSelPage).show();
-     })
+    });
     
 });
 
