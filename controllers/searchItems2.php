@@ -20,7 +20,7 @@ $service = new Services\FindingService([
 $request = new Types\FindItemsByProductRequest();
 
 $productId = new Types\ProductId();
-$productId->value = '085392246724';
+$productId->value = '352039451777';
 $productId->type = 'UPC';
 $request->productId = $productId;
 
