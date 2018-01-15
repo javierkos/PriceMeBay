@@ -3,7 +3,7 @@ numPerPage = 9;
 currentSelPage = 1;
 $(document).ready(function() {
     search = window.location.search.substr(1).slice(2);
-    search = search.replace(/+/g,' ');
+    search = search.replace(/\+/g,' ');
     search = search.replace(/[^\w\s]/gi, '');
     if (search){
         $.ajax({
