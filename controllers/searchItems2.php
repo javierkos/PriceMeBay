@@ -6,14 +6,14 @@ require __DIR__.'/../vendor/autoload.php';
 
 $config = require 'configuration.php';
 use \DTS\eBaySDK\Constants;
-use \DTS\eBaySDK\Finding\Services;
-use \DTS\eBaySDK\Finding\Types;
-use \DTS\eBaySDK\Finding\Enums;
+use \DTS\eBaySDK\Merchandising\Services;
+use \DTS\eBaySDK\Merchandising\Types;
+use \DTS\eBaySDK\Merchandising\Enums;
 
-$service = new Services\FindingService([
+$service = new Services\MerchandisingService([
     'credentials' => $config['production']['credentials'],
     'globalId'    => Constants\GlobalIds::GB,
-    'apiVersion' => '1.13.0',
+    'apiVersion' => '1.5.0',
     'sandbox' => false
 ]);
 
