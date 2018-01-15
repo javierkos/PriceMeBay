@@ -2,14 +2,14 @@ $(document).ready(function() {
     search = window.location.search.substr(1).slice(2);
     $.ajax({
         type: "POST",
-        url: 'controllers/searchItems2.php',
+        url: 'controllers/searchItems.php',
         data: {
             keywords: search
         },
         success: function(data)
         {
-            alert(data);
-           /*var parsedData = JSON.parse(data);
+            //alert(data);
+           var parsedData = JSON.parse(data);
             for (i = 0; i < 10; i++) { 
                 $("#products").append(`<div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
@@ -31,7 +31,7 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>`);
-            }*/
+            }
         },
         error: function(data){
             alert("error:"+data);

@@ -17,12 +17,7 @@ $service = new Services\MerchandisingService([
     'sandbox' => false
 ]);
 
-try {
-    $request = new Types\GetSimilarItemsRequest();
-
-} catch (Exception $e) {
-    echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
+$request = new Types\GetSimilarItemsRequest();
 
 $request->maxResults = 10;
 $request->itemId = '352039451777';
