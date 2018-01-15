@@ -3,7 +3,7 @@ numPerPage = 9;
 currentSelPage = 1;
 $(document).ready(function() {
     url = window.location.href;
-    search = unescape(url.replace(/%20/g,'+')).split("?s=")[1];
+    search = unescape(url.replace(/\+/g,' ')).split("?s=")[1];
     alert(search);
     search = search.replace(/[^\w\s]/gi, '');
 
