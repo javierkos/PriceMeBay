@@ -4,7 +4,7 @@ currentSelPage = 1;
 $(document).ready(function() {
     search = window.location.search.substr(1).slice(2);
     search = search.replace(/\+/g,' ');
-    search = search.replace(/[^\w\s]/gi, '');
+    search = search.replace(/\W/g, '')
     if (search){
         $.ajax({
             type: "POST",
