@@ -21,7 +21,7 @@ $request = new Types\FindItemsByProductRequest();
 
 $productId = new Types\ProductId();
 $productId->value = '352039451777';
-$productId->type = 'UPC';
+$productId->type = 'ReferenceID';
 $request->productId = $productId;
 
 $response = $service->findItemsByProduct($request);
