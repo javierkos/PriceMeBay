@@ -30,7 +30,7 @@ $(document).ready(function() {
                     }
                     $("#page"+pageNum).append(`<div class="item  col-xs-4 col-lg-4">
                     <div class="thumbnail" style="height:250px;">
-                        <img class="group list-group-image" style="height:120px;" src="`+parsedData[i]['pic']+`" alt="" />
+                        <img class="group list-group-image" style="height:120px;margin-top:10px;" src="`+parsedData[i]['pic']+`" alt="" />
                         <div class="caption">
                             <h4 class="group inner list-group-item-heading">`
                                 +tempTitle+`</h4>
