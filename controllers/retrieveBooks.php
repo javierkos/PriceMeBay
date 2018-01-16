@@ -19,7 +19,7 @@ $service = new Services\FindingService([
 
 $request = new Types\FindItemsByCategoryRequest();
 
-$request->categoryId = '267';
+$request->categoryId = ['267'];
 $response = $service->findItemsByCategory($request);
 
 if (isset($response->errorMessage)) {
