@@ -19,7 +19,6 @@ $service = new Services\FindingService([
 
 $request = new Types\FindItemsByCategoryRequest();
 
-$request->keywords = filter_input(INPUT_POST, 'keywords', FILTER_SANITIZE_STRING);
 $request->categoryId = '267';
 $response = $service->findItemsByCategory($request);
 
