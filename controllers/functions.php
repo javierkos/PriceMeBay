@@ -4,9 +4,7 @@ include_once 'constants.php';
 function sec_session_start() {
     $session_name = 'sec_session_id';   // Configura un nombre de sesión personalizado.
     $secure = SECURE;
-    // Esto detiene que JavaScript sea capaz de acceder a la identificación de la sesión.
     $httponly = true;
-    // Obliga a las sesiones a solo utilizar cookies.
     if (ini_set('session.use_only_cookies', 1) === FALSE) {
         header("Location: ../error.php?err=Could not initiate a safe session (ini_set)");
         exit();

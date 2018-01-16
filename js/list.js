@@ -9,7 +9,7 @@ $(document).ready(function() {
     if (search){
         $.ajax({
             type: "POST",
-            url: 'controllers/searchItems.php',
+            url: 'controllers/retrieveBooks.php',
             data: {
                 keywords: search
             },
