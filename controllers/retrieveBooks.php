@@ -17,10 +17,19 @@ $service = new Services\FindingService([
     'sandbox' => false
 ]);
 
-$request = new Types\FindItemsByCategoryRequest();
+$request = new Types\FindItemsAdvancedRequest();
+
+$request->keywords = filter_input(INPUT_POST, 'keywords', FILTER_SANITIZE_STRING);
 
 $request->categoryId = ['267'];
-$response = $service->findItemsByCategory($request);
+
+$itemFilter = new Types\ItemFilter();
+$itemFilter->value[] = 'Auction';
+$request->itemFilter[] = $itemFilter;
+
+$response = $service->findItemsAdvanced($request);
+
+
 
 if (isset($response->errorMessage)) {
     foreach ($response->errorMessage->error as $error) {
