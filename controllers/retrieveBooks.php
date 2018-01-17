@@ -81,7 +81,7 @@ $sql2 = $conn->prepare("SELECT TOP 1 isbn FROM books WHERE isbn = ?");
         $count = $count + 1;
     }*/
     
-    $limit = min($response->paginationOutput->totalPages, 200);
+    $limit = min($response->paginationOutput->totalPages, 10);
 
     for ($pageNum = 1; $pageNum <= $limit; $pageNum++) {
         $request->paginationInput->pageNumber = $pageNum;
@@ -91,6 +91,7 @@ $sql2 = $conn->prepare("SELECT TOP 1 isbn FROM books WHERE isbn = ?");
                 foreach ($response->searchResult->item as $item) {
                     $t = (string)$item->title;
                     $i = getISBN((string)$item->productId);
+                    echo $i+"\n";
                     $sql2->bindParam(1,$i);
                     $sql2->execute();
                     $numOfRows = $sql2->fetchColumn(); 
@@ -100,17 +101,17 @@ $sql2 = $conn->prepare("SELECT TOP 1 isbn FROM books WHERE isbn = ?");
                         $sql->bindParam(2, $i);
                         $sql->execute();   
                         //$sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
-                        $elements[$count]['itemId'] = $item->itemId;
+                        /*$elements[$count]['itemId'] = $item->itemId;
                         $elements[$count]['title'] = $item->title;
                         $elements[$count]['itemId'] = $item->itemId;
                         $elements[$count]['currency'] = $item->sellingStatus->currentPrice->currencyId;
                         $elements[$count]['price'] = $item->sellingStatus->currentPrice->value;
-                        $elements[$count]['pic'] = $item->galleryURL;
+                        $elements[$count]['pic'] = $item->galleryURL;*/
                     }
             
                     $count = $count + 1;
             }
         }
     }
-    echo json_encode($elements);
+    //echo json_encode($elements);
 }
