@@ -49,7 +49,7 @@ if (isset($response->errorMessage)) {
 }
 $elements = array();
 $count = 0;
-$sql = $mysqli->prepare("INSERT INTO books VALUES ?,?");
+$sql = $conn->prepare("INSERT INTO books VALUES ?,?");
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
         $t = (string)$item->title;
