@@ -59,7 +59,7 @@ $elements = array();
 $count = 0;
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
-        $sql = "INSERT ".$item->title.",".$item->itemId."  INTO books";
+        $sql = "INSERT INTO books VALUES ".$item->title.",".$item->itemId;
         $conn->query($sql);
         $sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
         $elements[$count]['itemId'] = $item->itemId;
