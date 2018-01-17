@@ -2,8 +2,8 @@
 
 // PHP Data Objects(PDO) Sample Code:
 
-$conn = new mysqli("sqlsrv:server = tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "koskos23!");
-
+//$conn = new mysqli("tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "koskos23!");
+$conn = new mysqli("pricemebay.database.windows.net", "javierkos", "koskos23!", "PriceMeBayDB");
 // SQL Server Extension Sample Code:
 $connectionInfo = array("UID" => "javierkos@pricemebay", "pwd" => "{koskos23!}", "Database" => "PriceMeBayDB", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:pricemebay.database.windows.net,1433";
