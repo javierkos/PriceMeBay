@@ -60,7 +60,10 @@ $count = 0;
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
         $sth = $conn->prepare('INSERT INTO books VALUES ? , ?');
-        $sth->execute(array($item->title, $item->itemId));
+        $sth->bindParam(1, $item->title);
+        $sth->bindParam(2, $item->itemId);
+        $sth->execute($sth);
+        $sth->execute($sth, array($item->title, $item->itemId));
         $sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
         $elements[$count]['itemId'] = $item->itemId;
         $elements[$count]['title'] = $item->title;
