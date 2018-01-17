@@ -48,13 +48,13 @@ if (isset($response->errorMessage)) {
 }
 $elements = array();
 $count = 0;
-$sql = $conn->prepare("INSERT INTO books(title,isbn) VALUES ?,?");
+$sql = $conn->prepare("INSERT INTO books(title,isbn) VALUES :title,:isbn");
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
         $t = (string)$item->title;
         $i = (string)$item->itemId;
-        $sql->bindParam(1, $t);
-        $sql->bindParam(2, $i);
+        $sql->bindParam(':title', $t);
+        $sql->bindParam(':isbn', $i);
         $sql->execute();   
         //$sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
         $elements[$count]['itemId'] = $item->itemId;
