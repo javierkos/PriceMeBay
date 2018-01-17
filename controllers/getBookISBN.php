@@ -36,7 +36,11 @@ function getISBN($refId){
 
     if ($response->Ack !== 'Failure') {
         $item = $response->Item;
-        return $item->ProductListingDetails->ISBN;
+        if ($item->ProductListingDetails){
+            return $item->ProductListingDetails->ISBN;
+        }else{
+            return "Nothing";
+        }
     }
 
 }
