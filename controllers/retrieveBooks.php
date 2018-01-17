@@ -2,6 +2,8 @@
 
 // PHP Data Objects(PDO) Sample Code:
 
+include_once 'getBookISBN.php';
+
 //$conn = new mysqli("tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "koskos23!");
 $conn = new PDO("sqlsrv:server = tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "koskos23!");
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -15,6 +17,7 @@ use \DTS\eBaySDK\Constants;
 use \DTS\eBaySDK\Finding\Services;
 use \DTS\eBaySDK\Finding\Types;
 use \DTS\eBaySDK\Finding\Enums;
+
 
 $service = new Services\FindingService([
     'credentials' => $config['production']['credentials'],
@@ -87,7 +90,7 @@ $sql2 = $conn->prepare("SELECT TOP 1 isbn FROM books WHERE isbn = ?");
             foreach ($response->searchResult->item as $item) {
                 foreach ($response->searchResult->item as $item) {
                     $t = (string)$item->title;
-                    $i = (string)$item->productId->ISBN;
+                    $i = getISBN((string)$item->productId);
                     $sql2->bindParam(1,$i);
                     $sql2->execute();
                     $numOfRows = $sql2->fetchColumn(); 
