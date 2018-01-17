@@ -33,9 +33,6 @@ $itemFilter = new Types\ItemFilter();
 $itemFilter->value[] = 'Auction';
 $request->itemFilter[] = $itemFilter;
 
-$request->productID = new Types\ProductIDType();
-$request->productID->type = 'ISBN';
-
 $request->paginationInput = new Types\PaginationInput();
 $request->paginationInput->entriesPerPage = 100;
 $request->paginationInput->pageNumber = 1;
