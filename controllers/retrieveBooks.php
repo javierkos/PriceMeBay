@@ -90,7 +90,7 @@ $sql2 = $conn->prepare("SELECT TOP 1 isbn FROM books WHERE isbn = ?");
             foreach ($response->searchResult->item as $item) {
                 foreach ($response->searchResult->item as $item) {
                     $t = (string)$item->title;
-                    $i = getISBN((string)$item->productId);
+                    $i = getISBN((string)$item->itemId);
                     echo $i+"\n";
                     $sql2->bindParam(1,$i);
                     $sql2->execute();
