@@ -36,7 +36,7 @@ function getISBN($refId){
 
     if ($response->Ack !== 'Failure') {
         $item = $response->Item;
-        return $item;
+        return $item->Title;
     }
 
 }
