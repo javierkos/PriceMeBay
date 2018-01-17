@@ -60,8 +60,8 @@ $count = 0;
 $sth = $conn->prepare('INSERT INTO books VALUES (?) , (?)');
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
-        $t = $item->title;
-        $i = $item->itemId;
+        $t = mysqli_real_escape_string($item->title);
+        $i = mysqli_real_escape_string($item->itemId);
         /*$sth->bindParam(1, $t);
         $sth->bindParam(2, $i);
         $sth->execute();*/
