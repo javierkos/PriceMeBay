@@ -1,14 +1,8 @@
 <?php
 
 // PHP Data Objects(PDO) Sample Code:
-try {
-    $conn = new PDO("sqlsrv:server = tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "koskos23!");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $e) {
-    print("Error connecting to SQL Server.");
-    die(print_r($e));
-}
+
+$conn = new mysqli("sqlsrv:server = tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "koskos23!");
 
 // SQL Server Extension Sample Code:
 $connectionInfo = array("UID" => "javierkos@pricemebay", "pwd" => "{koskos23!}", "Database" => "PriceMeBayDB", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
@@ -57,16 +51,12 @@ if (isset($response->errorMessage)) {
 }
 $elements = array();
 $count = 0;
-$sth = $conn->prepare('INSERT INTO books VALUES (?) , (?)');
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
         $t = mysqli_real_escape_string($conn,$item->title);
         $i = mysqli_real_escape_string($conn,$item->itemId);
-        /*$sth->bindParam(1, $t);
-        $sth->bindParam(2, $i);
-        $sth->execute();*/
         $conn->query("INSERT INTO books VALUES '$t','$i'");
-        $sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
+        //$sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
         $elements[$count]['itemId'] = $item->itemId;
         $elements[$count]['title'] = $item->title;
         $elements[$count]['itemId'] = $item->itemId;
