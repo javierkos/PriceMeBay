@@ -59,7 +59,9 @@ $elements = array();
 $count = 0;
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
-        $sql = "INSERT INTO books VALUES ".$item->title.",".$item->itemId;
+        $t = mysql_real_escape_string($item->title);
+        $i = mysql_real_escape_string($item->itemId);
+        $sql = "INSERT INTO books VALUES '$t','$i'";
         $conn->query($sql);
         $sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
         $elements[$count]['itemId'] = $item->itemId;
