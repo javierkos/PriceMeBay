@@ -86,17 +86,6 @@ $sql2 = $conn->prepare("SELECT TOP 1 isbn FROM books WHERE isbn = ?");
     for ($pageNum = 1; $pageNum <= $limit; $pageNum++) {
         $request->paginationInput->pageNumber = $pageNum;
         $response = $service->findItemsAdvanced($request);
-        
-        if (isset($response->errorMessage)) {
-            foreach ($response->errorMessage->error as $error) {
-                printf(
-                    "%s: %s\n\n",
-                    $error->severity=== Enums\ErrorSeverity::C_ERROR ? 'Error' : 'Warning',
-                    $error->message
-                );
-            }
-        }
-
         if ($response->ack !== 'Failure') {
             foreach ($response->searchResult->item as $item) {
                 foreach ($response->searchResult->item as $item) {
