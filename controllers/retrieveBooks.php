@@ -50,7 +50,7 @@ $elements = array();
 $count = 0;
 $sql = $conn->prepare("INSERT INTO books(title,isbn) VALUES (?,?)");
 $sql2 = $conn->prepare("SELECT TOP 1 isbn FROM books WHERE isbn = ?");
-if ($response->ack !== 'Failure') {
+/*if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
         $t = (string)$item->title;
         $i = (string)$item->itemId;
@@ -72,7 +72,7 @@ if ($response->ack !== 'Failure') {
         }
 
         $count = $count + 1;
-    }
+    }*/
     
     $limit = min($response->paginationOutput->totalPages, 10);
 
