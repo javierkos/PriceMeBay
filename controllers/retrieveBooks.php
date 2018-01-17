@@ -48,18 +48,14 @@ if (isset($response->errorMessage)) {
 }
 $elements = array();
 $count = 0;
-$sql = $conn->prepare("INSERT INTO books VALUES ?,?");
+$sql = $conn->prepare("INSERT INTO books VALUES (?),(?)");
 if ($response->ack !== 'Failure') {
-    $count = 0;
     foreach ($response->searchResult->item as $item) {
-        $count = $count + 1;
         $t = (string)$item->title;
         $i = (string)$item->itemId;
-        if ($count = 58){
         $sql->bindValue(1, $t);
         $sql->bindValue(2, $i);
         $sql->execute();   
-        }
         //$sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
         $elements[$count]['itemId'] = $item->itemId;
         $elements[$count]['title'] = $item->title;
