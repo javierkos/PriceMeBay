@@ -57,11 +57,12 @@ if (isset($response->errorMessage)) {
 }
 $elements = array();
 $count = 0;
+$sth = $conn->prepare('INSERT INTO books VALUES :title , :isbn');
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
         $t = $item->title;
         $i = $item->itemId;
-        $sth = $conn->prepare('INSERT INTO books VALUES :title , :isbn');
+
         $sth->bindParam(':title', $t);
         $sth->bindParam(':isbn', $i);
         $sth->execute();
