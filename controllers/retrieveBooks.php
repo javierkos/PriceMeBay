@@ -53,8 +53,8 @@ if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
         $t = (string)$item->title;
         $i = (string)$item->itemId;
-        $sql->bindValue(1, $t);
-        $sql->bindValue(2, $i);
+        $sql->bindParam(1, $t);
+        $sql->bindParam(2, $i);
         $sql->execute();   
         //$sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
         $elements[$count]['itemId'] = $item->itemId;
