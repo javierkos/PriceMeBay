@@ -3,8 +3,8 @@
 // PHP Data Objects(PDO) Sample Code:
 
 //$conn = new mysqli("tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "koskos23!");
-$conn = new mysqli("pricemebay.database.windows.net", "javierkos", "koskos23!", "PriceMeBayDB");
-
+$conn = mysqli_init();
+mysqli_real_connect($conn,"pricemebay.database.windows.net","javierkos","koskos23!","PriceMeBayDB", 3306);
 
 error_reporting(-1);
 ini_set('display_errors', 'On');
