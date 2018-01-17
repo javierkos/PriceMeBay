@@ -33,6 +33,10 @@ $itemFilter = new Types\ItemFilter();
 $itemFilter->value[] = 'Auction';
 $request->itemFilter[] = $itemFilter;
 
+$request->paginationInput = new Types\PaginationInput();
+$request->paginationInput->entriesPerPage = 100;
+$request->paginationInput->pageNumber = 1;
+
 $response = $service->findItemsAdvanced($request);
 
 
