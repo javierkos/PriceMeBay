@@ -4,7 +4,7 @@
 
 //$conn = new mysqli("tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "koskos23!");
 $conn = mysqli_init();
-mysqli_real_connect($conn,"pricemebay.database.windows.net","javierkos@pricemebay","koskos23!","PriceMeBayDB", 3306);
+mysqli_real_connect($conn,"tcp:pricemebay.database.windows.net,1433","javierkos@pricemebay","koskos23!","PriceMeBayDB", 3306);
 
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
