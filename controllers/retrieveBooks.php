@@ -57,14 +57,13 @@ if (isset($response->errorMessage)) {
 }
 $elements = array();
 $count = 0;
-$sth = $conn->prepare('INSERT INTO books VALUES :title , :isbn');
+$sth = $conn->prepare('INSERT INTO books VALUES (?) , (?)');
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
         $t = $item->title;
         $i = $item->itemId;
-
-        $sth->bindParam(':title', $t);
-        $sth->bindParam(':isbn', $i);
+        $sth->bindParam(1, $t);
+        $sth->bindParam(2, $i);
         $sth->execute();
         $sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
         $elements[$count]['itemId'] = $item->itemId;
