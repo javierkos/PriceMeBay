@@ -74,5 +74,36 @@ if ($response->ack !== 'Failure') {
         $count = $count + 1;
     }
     
+    $limit = min($response->paginationOutput->totalPages, 10);
+
+    for ($pageNum = 2; $pageNum <= $limit; $pageNum++) {
+        $request->paginationInput->pageNumber = $pageNum;
+        $response = $service->findItemsAdvanced($request);
+        if ($response->ack !== 'Failure') {
+            foreach ($response->searchResult->item as $item) {
+                foreach ($response->searchResult->item as $item) {
+                    $t = (string)$item->title;
+                    $i = (string)$item->itemId;
+                    $sql2->bindParam(1,$i);
+                    $sql2->execute();
+                    $numOfRows = $sql2->fetchColumn(); 
+                    if ($numOfRows == 0)
+                    { 
+                        $sql->bindParam(1, $t);
+                        $sql->bindParam(2, $i);
+                        $sql->execute();   
+                        //$sql = $mysqli->prepare("INSERT user_id, username, password, salt FROM users WHERE username = ? LIMIT 1");
+                        $elements[$count]['itemId'] = $item->itemId;
+                        $elements[$count]['title'] = $item->title;
+                        $elements[$count]['itemId'] = $item->itemId;
+                        $elements[$count]['currency'] = $item->sellingStatus->currentPrice->currencyId;
+                        $elements[$count]['price'] = $item->sellingStatus->currentPrice->value;
+                        $elements[$count]['pic'] = $item->galleryURL;
+                    }
+            
+                    $count = $count + 1;
+            }
+        }
+    }
     echo json_encode($elements);
 }
