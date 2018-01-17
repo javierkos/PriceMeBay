@@ -48,7 +48,7 @@ if (isset($response->errorMessage)) {
 }
 $elements = array();
 $count = 0;
-$sql = $conn->prepare("INSERT INTO books(title,isbn) VALUES (?),(?)");
+$sql = $conn->prepare("INSERT INTO books(title,isbn) VALUES ?,?");
 if ($response->ack !== 'Failure') {
     foreach ($response->searchResult->item as $item) {
         $t = (string)$item->title;
