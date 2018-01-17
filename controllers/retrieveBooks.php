@@ -78,7 +78,7 @@ $sql2 = $conn->prepare("SELECT TOP 1 isbn FROM books WHERE isbn = ?");
         $count = $count + 1;
     }*/
     
-    $limit = min($response->paginationOutput->totalPages, 30);
+    $limit = min($response->paginationOutput->totalPages, 200);
 
     for ($pageNum = 1; $pageNum <= $limit; $pageNum++) {
         $request->paginationInput->pageNumber = $pageNum;
