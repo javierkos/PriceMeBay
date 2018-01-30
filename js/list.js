@@ -21,7 +21,16 @@ $(document).ready(function() {
             var parsedData = JSON.parse(data);
             numElem = parsedData.length;
             pageNum = 0;
-                for (i = 0; i < numElem; i++) { 
+                for (i = 0; i < numElem; i++) {
+                    relevance = "Very low relevance";
+                    if (parsedData[i]['catPer'] >= 50){
+                        relevance = "Very high relevance";
+                    }
+                    else if (parsedData[i]['catPer'] >= 20){
+                        relevance = "High relevance";
+                    }else if (parsedData[i]['catPer'] >= 5){
+                        relevance = "Low relevance";
+                    }
                     tempTitle = parsedData[i]['catName'];
                     if (tempTitle.length > 25)
                         tempTitle = tempTitle.substring(0,22)+'...';
@@ -41,7 +50,7 @@ $(document).ready(function() {
                             `<div class="row">
                                 <div class="col-xs-12 col-md-6">
                                     <p class="cost">`
-                                        +parsedData[i]['catPer']+" "+parsedData[i]['catLevel']+`</p>
+                                        +relevance+" "+parsedData[i]['catLevel']+`</p>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
                                     <a class="btn btn-success" href="http://www.jquery2dotnet.com">Analyze</a>
