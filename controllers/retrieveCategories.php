@@ -58,9 +58,9 @@ $stmt = $conn->prepare("INSERT INTO categories (name,parent_id,ebay_id) VALUES (
 if ($response->Ack !== 'Failure') {
     foreach ($response->CategoryArray->Category as $category) {
         if ($category->CategoryParentID[0] != NULL){
-            $sql->bindParam(1, $category->CategoryName);
-            $sql->bindParam(2, $category->CategoryParentID[0]);
-            $sql->bindParam(3, $category->CategoryID);
+            $stmt->bindParam(1, $category->CategoryName);
+            $stmt->bindParam(2, $category->CategoryParentID[0]);
+            $stmt->bindParam(3, $category->CategoryID);
             $stmt->execute();  
         }
     }
