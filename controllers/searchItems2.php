@@ -34,15 +34,17 @@ $request->OutputSelector = [
 
 $response = $service->getSuggestedCategories($request);
 
-if (isset($response->errorMessage)) {
-    foreach ($response->errorMessage->error as $error) {
+if (isset($response->Errors)) {
+    foreach ($response->Errors as $error) {
         printf(
-            "%s: %s\n\n",
-            $error->severity=== Enums\ErrorSeverity::C_ERROR ? 'Error' : 'Warning',
-            $error->message
+            "%s: %s\n%s\n\n",
+            $error->SeverityCode === Enums\SeverityCodeType::C_ERROR ? 'Error' : 'Warning',
+            $error->ShortMessage,
+            $error->LongMessage
         );
     }
 }
+
 $elements = array();
 $count = 0;
 
