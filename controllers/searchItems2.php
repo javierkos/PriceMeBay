@@ -56,12 +56,12 @@ $count = 0;
 
 if ($response->Ack !== 'Failure') {
     foreach ($response->SuggestedCategoryArray->SuggestedCategory as $category) {
-        $level = checkLevel($category->Category->CategoryID,$conn);
-            $elements[$count]['catper'] = $category->PercentItemFound;
-            $elements[$count]['catLevel'] = $level;
-            $elements[$count]['catName'] = $category->Category->CategoryName;
-            $elements[$count]['catId'] = $category->Category->CategoryID;
-            $elements[$count]['catParId'] = $category->Category->CategoryParentID[0];
+        //$level = checkLevel($category->Category->CategoryID,$conn);
+        $elements[$count]['catper'] = $category->PercentItemFound;
+        $elements[$count]['catLevel'] = $level;
+        $elements[$count]['catName'] = $category->Category->CategoryName;
+        $elements[$count]['catId'] = $category->Category->CategoryID;
+        $elements[$count]['catParId'] = $category->Category->CategoryParentID[0];
 
         $count = $count + 1;
     }
