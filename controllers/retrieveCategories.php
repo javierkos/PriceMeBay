@@ -54,7 +54,7 @@ if (isset($response->Errors)) {
 $elements = array();
 $count = 0;
 
-$stmt = $conn->prepare("INSERT INTO categories (name,parent_id,ebay_id) VALUES (?, ?, ?,?)");
+$stmt = $conn->prepare("INSERT INTO categories (name,parent_id,ebay_id) VALUES (?, ?, ?)");
 if ($response->Ack !== 'Failure') {
     foreach ($response->CategoryArray->Category as $category) {
         if ($category->CategoryParentID[0] != NULL){
