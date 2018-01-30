@@ -49,10 +49,8 @@ $elements = array();
 $count = 0;
 
 if ($response->Ack !== 'Failure') {
-    usort($response->SuggestedCategoryArray, function($a, $b) { //Sort the array using a user defined function
-        return $a->SuggestedCategory->PercentItemFound > $b->SuggestedCategory->PercentItemFound ? -1 : 1; //Compare the scores
-    });  
     foreach ($response->SuggestedCategoryArray->SuggestedCategory as $category) {
+        $elements[$count]['catper'] = $category->PercentItemFound;
         $elements[$count]['catLevel'] = $category->Category->CategoryLevel;
         $elements[$count]['catName'] = $category->Category->CategoryName;
         $elements[$count]['catId'] = $category->Category->CategoryID;
