@@ -43,8 +43,8 @@ $(document).ready(function() {
                                     <p class="cost">`
                                         +parsedData[i]['catLevel']+" "+parsedData[i]['catLevel']+`</p>
                                 </div>
-                                <div style="text-align:center;" class="col-xs-12 col-md-6">
-                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">View</a>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">Analyze</a>
                                 </div>
                             </div>
                         </div>
