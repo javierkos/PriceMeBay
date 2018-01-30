@@ -58,7 +58,7 @@ $mainCategories = array();
 if ($response->Ack !== 'Failure') {
     foreach ($response->SuggestedCategoryArray->SuggestedCategory as $category) {
         #$level = checkLevel($category->Category->CategoryID,$conn);
-        getCatStack($category->Category->CategoryID);
+        getCatStack($category->Category->CategoryID,$conn);
         $elements[$count]['catper'] = $category->PercentItemFound;
         $elements[$count]['catLevel'] = $level;
         $elements[$count]['catName'] = $category->Category->CategoryName;
