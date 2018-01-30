@@ -50,7 +50,7 @@ $(document).ready(function() {
                             `<div class="row">
                                 <div class="col-xs-12 col-md-6">
                                     <p class="cost">`
-                                        +relevance+" "+parsedData[i]['catLevel']+`</p>
+                                        +relevance+`</p>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
                                     <a class="btn btn-success" href="http://www.jquery2dotnet.com">Analyze</a>
