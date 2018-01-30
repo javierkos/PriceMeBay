@@ -22,12 +22,12 @@ $(document).ready(function() {
             numElem = parsedData.length;
             pageNum = 0;
                 for (i = 0; i < numElem; i++) {
-                    relevance = '<span style="background-color:red;" class="dot tooltip"><span class="tooltiptext">Low relevance</span></span>';
+                    relevance = '<span style="background-color:red;opacity = 1;" class="dot tooltip"><span class="tooltiptext">Low relevance</span></span>';
                     if (parsedData[i]['catPer'] >= 20){
-                        relevance = '<span style="background-color:green;" class="dot tooltip"><span class="tooltiptext">High relevance</span></span>';
+                        relevance = '<span style="background-color:green;opacity = 1;" class="dot tooltip"><span class="tooltiptext">High relevance</span></span>';
                     }
                     else if (parsedData[i]['catPer'] >= 5){
-                        relevance = '<span style="background-color:orange;" class="dot tooltip"><span class="tooltiptext">Ok relevance</span></span>';
+                        relevance = '<span style="background-color:orange;opacity = 1;" class="dot tooltip"><span class="tooltiptext">Ok relevance</span></span>';
                     }
                     tempTitle = parsedData[i]['catName'];
                     if (tempTitle.length > 25)
