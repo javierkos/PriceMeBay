@@ -22,14 +22,14 @@ $(document).ready(function() {
             numElem = parsedData.length;
             pageNum = 0;
                 for (i = 0; i < numElem; i++) {
-                    relevance = "Very low relevance";
+                    relevance = '<span style="background-color:red;" class="dot"></span>';
                     if (parsedData[i]['catPer'] >= 50){
-                        relevance = "Very high relevance";
+                        relevance = '<span style="background-color:green;" class="dot"></span>';
                     }
                     else if (parsedData[i]['catPer'] >= 20){
-                        relevance = "High relevance";
+                        relevance = '<span style="background-color:yellow;" class="dot"></span>';
                     }else if (parsedData[i]['catPer'] >= 5){
-                        relevance = "Low relevance";
+                        relevance = '<span style="background-color:orange;" class="dot"></span>';
                     }
                     tempTitle = parsedData[i]['catName'];
                     if (tempTitle.length > 25)
