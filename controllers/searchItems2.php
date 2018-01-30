@@ -93,7 +93,7 @@ function getCatStack($catId,$conn){
     $stmt->bindParam(1, $catId);
     $stmt->execute();
     $catNames = Array();
-    while ($row = $stmt->fetchRow()) {
+    while ($row = $stmt->fetch()) {
         $catNames[] =  $row['catstack'];  
     }
     return $catNames;
