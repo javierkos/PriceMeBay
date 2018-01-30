@@ -67,7 +67,7 @@ if ($response->Ack !== 'Failure') {
 
         $count = $count + 1;
     }
-    #echo json_encode($elements);
+    echo json_encode($elements);
 }
 
 function checkLevel($catId,$conn){
