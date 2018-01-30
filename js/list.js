@@ -41,7 +41,7 @@ $(document).ready(function() {
                             `<div class="row">
                                 <div class="col-xs-12 col-md-6">
                                     <p class="cost">`
-                                        +parsedData[i]['catLevel']+" "+parsedData[i]['catLevel']+`</p>
+                                        +parsedData[i]['catStack'].join()+" "+parsedData[i]['catLevel']+`</p>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
                                     <a class="btn btn-success" href="http://www.jquery2dotnet.com">Compare</a>
