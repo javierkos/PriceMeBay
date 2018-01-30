@@ -11,13 +11,6 @@ use \DTS\eBaySDK\Trading\Services;
 use \DTS\eBaySDK\Trading\Types;
 use \DTS\eBaySDK\Trading\Enums;
 
-$service = new Services\MerchandisingService([
-    'credentials' => $config['production']['credentials'],
-    'globalId'    => Constants\GlobalIds::GB,
-    'apiVersion' => '1.5.0',
-    'sandbox' => false
-]);
-
 $service = new Services\TradingService([
     'credentials' => $config['production']['credentials'],
     'siteId'      => Constants\SiteIds::GB,
