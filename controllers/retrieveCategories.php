@@ -54,13 +54,14 @@ if (isset($response->Errors)) {
 $elements = array();
 $count = 0;
 
-$stmt = $conn->prepare("INSERT INTO categories (name,parent_id,ebay_id) VALUES (?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO categories (name,parent_id,ebay_id,level) VALUES (?, ?, ?,?)");
 if ($response->Ack !== 'Failure') {
     foreach ($response->CategoryArray->Category as $category) {
-        if ($category->CategoryParentID[0] != NULL){
+        if ($category->CategoryParentID[0] != NULL && $category->CategoryID != NULL){
             $stmt->bindParam(1, $category->CategoryName);
             $stmt->bindParam(2, $category->CategoryParentID[0]);
             $stmt->bindParam(3, $category->CategoryID);
+            $stmt->bindParam(4, $category->CategoryLevel);
             $stmt->execute();  
         }
     }
