@@ -53,10 +53,12 @@ if (isset($response->Errors)) {
 
 $elements = array();
 $count = 0;
-
+$numMainCat = 0;
+$mainCategories = array();
 if ($response->Ack !== 'Failure') {
     foreach ($response->SuggestedCategoryArray->SuggestedCategory as $category) {
-        //$level = checkLevel($category->Category->CategoryID,$conn);
+        #$level = checkLevel($category->Category->CategoryID,$conn);
+        getCatStack($category->Category->CategoryID);
         $elements[$count]['catper'] = $category->PercentItemFound;
         $elements[$count]['catLevel'] = $level;
         $elements[$count]['catName'] = $category->Category->CategoryName;
@@ -65,7 +67,7 @@ if ($response->Ack !== 'Failure') {
 
         $count = $count + 1;
     }
-    echo json_encode($elements);
+    #echo json_encode($elements);
 }
 
 function checkLevel($catId,$conn){
@@ -74,4 +76,23 @@ function checkLevel($catId,$conn){
     $stmt->execute();
     $row = $stmt->fetch();
     return $row['level'];
+}
+
+function getCatStack($catId,$conn){
+    $stmt = $conn->prepare("
+        DECLARE @curId INT = 0,
+                @parentId INT = ?,
+                @name VARCHAR(100) = '',
+                @cats VARCHAR(MAX) = '';
+
+        WHILE @curId != @parentId
+        BEGIN
+        SELECT @curId=ebay_id,@parentId = parent_id,@name = name + ',' + @name FROM categories WHERE ebay_id = @parentId;
+        END;
+        SELECT value as 'catstack' FROM STRING_SPLIT(@name, ',');");
+    $stmt->bindParam(1, $catId);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    echo $result;
+    return $result;
 }
