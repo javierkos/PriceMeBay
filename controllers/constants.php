@@ -1,9 +1,9 @@
 <?php
 
-define("HOST", "127.0.0.1:53238"); 
-define("USER", "azure"); 
-define("PASSWORD", "6#vWHD_$");
-define("DATABASE", "localdb");
+define("HOST", "pricemebay.database.windows.net"); 
+define("USER", "javierkos"); 
+define("PASSWORD", "GLP23ASq2");
+define("DATABASE", "PriceMeBayDB");
  
 define("CAN_REGISTER", "any");
 define("DEFAULT_ROLE", "member");

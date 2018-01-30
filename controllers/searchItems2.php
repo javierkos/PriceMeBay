@@ -5,10 +5,11 @@ ini_set('display_errors', 'On');
 require __DIR__.'/../vendor/autoload.php';
 
 $config = require 'configuration.php';
+
 use \DTS\eBaySDK\Constants;
-use \DTS\eBaySDK\Merchandising\Services;
-use \DTS\eBaySDK\Merchandising\Types;
-use \DTS\eBaySDK\Merchandising\Enums;
+use \DTS\eBaySDK\Trading\Services;
+use \DTS\eBaySDK\Trading\Types;
+use \DTS\eBaySDK\Trading\Enums;
 
 $service = new Services\MerchandisingService([
     'credentials' => $config['production']['credentials'],
@@ -17,12 +18,28 @@ $service = new Services\MerchandisingService([
     'sandbox' => false
 ]);
 
-$request = new Types\GetSimilarItemsRequest();
+$service = new Services\TradingService([
+    'credentials' => $config['production']['credentials'],
+    'siteId'      => Constants\SiteIds::GB,
+    'apiVersion' => '1043',
+    'sandbox' => false
+]);
 
-$request->maxResults = 10;
-$request->itemId = '352039451777';
+$request = new Types\GetSuggestedCategoriesRequestType();
 
-$response = $service->getSimilarItems($request);
+$request->Query = filter_input(INPUT_POST, 'keywords', FILTER_SANITIZE_STRING);
+
+$request->RequesterCredentials = new Types\CustomSecurityHeaderType();
+$request->RequesterCredentials->eBayAuthToken = $config['production']['authToken'];
+
+$request->OutputSelector = [
+    'CategoryArray.Category.CategoryID',
+    'CategoryArray.Category.CategoryParentID',
+    'CategoryArray.Category.CategoryLevel',
+    'CategoryArray.Category.CategoryName'
+];
+
+$response = $service->getSuggestedCategories($request);
 
 if (isset($response->errorMessage)) {
     foreach ($response->errorMessage->error as $error) {
@@ -35,16 +52,15 @@ if (isset($response->errorMessage)) {
 }
 $elements = array();
 $count = 0;
+
 if ($response->ack !== 'Failure') {
-    foreach ($response->searchResult->item as $item) {
-        $elements[$count]['itemId'] = $item->itemId;
-        $elements[$count]['title'] = $item->title;
-        $elements[$count]['itemId'] = $item->itemId;
-        $elements[$count]['currency'] = $item->sellingStatus->currentPrice->currencyId;
-        $elements[$count]['price'] = $item->sellingStatus->currentPrice->value;
-        $elements[$count]['pic'] = $item->galleryURL;
+
+    foreach ($response->CategoryArray->Category as $category) {
+        $elements[$count]['catLevel'] = $category->CategoryLevel;
+        $elements[$count]['catName'] = $category->CategoryName;
+        $elements[$count]['catId'] = $category->CategoryID;
+        $elements[$count]['catParId'] = $category->CategoryParentID[0];
         $count = $count + 1;
     }
-    
     echo json_encode($elements);
 }

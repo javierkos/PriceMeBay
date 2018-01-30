@@ -9,7 +9,7 @@ $(document).ready(function() {
     if (search){
         $.ajax({
             type: "POST",
-            url: 'controllers/retrieveBooks.php',
+            url: 'controllers/searchItems2.php',
             data: {
                 keywords: search
             },
@@ -22,7 +22,7 @@ $(document).ready(function() {
             numElem = parsedData.length;
             pageNum = 0;
                 for (i = 0; i < numElem; i++) { 
-                    tempTitle = parsedData[i]['title'];
+                    tempTitle = parsedData[i]['catName'];
                     if (tempTitle.length > 25)
                         tempTitle = tempTitle.substring(0,22)+'...';
                     if (i % numPerPage == 0){
@@ -37,11 +37,11 @@ $(document).ready(function() {
                             <h4 class="group inner list-group-item-heading">`
                                 +tempTitle+`</h4>
                             <p class="group inner list-group-item-text">`
-                            +parsedData[i]['itemId']+
+                            +parsedData[i]['catId']+
                             `<div class="row">
                                 <div class="col-xs-12 col-md-6">
                                     <p class="cost">`
-                                        +parsedData[i]['currency']+" "+parsedData[i]['price']+`</p>
+                                        +parsedData[i]['catLevel']+" "+parsedData[i]['catLevel']+`</p>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
                                     <a class="btn btn-success" href="http://www.jquery2dotnet.com">Compare</a>
