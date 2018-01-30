@@ -6,11 +6,6 @@ require __DIR__.'/../vendor/autoload.php';
 
 $config = require 'configuration.php';
 
-$conn = new PDO("sqlsrv:server = tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "GLP23ASq2");
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-error_reporting(-1);
-ini_set('display_errors', 'On');
-
 use \DTS\eBaySDK\Constants;
 use \DTS\eBaySDK\Trading\Services;
 use \DTS\eBaySDK\Trading\Types;

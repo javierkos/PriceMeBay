@@ -4,6 +4,12 @@ ini_set('display_errors', 'On');
 
 require __DIR__.'/../vendor/autoload.php';
 
+//$conn = new mysqli("tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "koskos23!");
+$conn = new PDO("sqlsrv:server = tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "GLP23ASq2");
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+error_reporting(-1);
+ini_set('display_errors', 'On');
+
 $config = require 'configuration.php';
 
 use \DTS\eBaySDK\Constants;
@@ -48,7 +54,7 @@ if (isset($response->Errors)) {
 $elements = array();
 $count = 0;
 
-$stmt = $mysqli->prepare("INSERT INTO categories (name,parent_id,ebay_id) VALUES (?, ?, ?,?)");
+$stmt = $conn->prepare("INSERT INTO categories (name,parent_id,ebay_id) VALUES (?, ?, ?,?)");
 if ($response->Ack !== 'Failure') {
     foreach ($response->CategoryArray->Category as $category) {
         if ($category->CategoryParentID[0] != NULL){
