@@ -36,12 +36,12 @@ $(document).ready(function() {
                         <div class="caption">
                             <h4 class="group inner list-group-item-heading">`
                                 +tempTitle+`</h4>
-                            <p class="group inner list-group-item-text">`
-                            +parsedData[i]['catId']+
+                            <p class="group inner list-group-item-text">in `
+                            +parsedData[i]['catStack'][0]+
                             `<div class="row">
                                 <div class="col-xs-12 col-md-6">
                                     <p class="cost">`
-                                        +parsedData[i]['catStack'].join()+" "+parsedData[i]['catLevel']+`</p>
+                                        +parsedData[i]['catLevel']+" "+parsedData[i]['catLevel']+`</p>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
                                     <a class="btn btn-success" href="http://www.jquery2dotnet.com">Compare</a>
@@ -53,7 +53,7 @@ $(document).ready(function() {
                 }
                 $("#pSel1").addClass("active");
                 $("#page1").show();
-                $("#contain").prepend('<h3>Showing results for '+search+':</h3>');
+                $("#contain").prepend('<h3>Potential categories for '+search+':</h3>');
             },
             error: function(data){
                 alert("error:"+data);
