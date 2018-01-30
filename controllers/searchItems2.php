@@ -6,6 +6,12 @@ require __DIR__.'/../vendor/autoload.php';
 
 $config = require 'configuration.php';
 
+//$conn = new mysqli("tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "koskos23!");
+$conn = new PDO("sqlsrv:server = tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "GLP23ASq2");
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+error_reporting(-1);
+ini_set('display_errors', 'On');
+
 use \DTS\eBaySDK\Constants;
 use \DTS\eBaySDK\Trading\Services;
 use \DTS\eBaySDK\Trading\Types;
@@ -50,7 +56,7 @@ $count = 0;
 
 if ($response->Ack !== 'Failure') {
     foreach ($response->SuggestedCategoryArray->SuggestedCategory as $category) {
-        if ($category->Category->CategoryLevel != null){
+        if (checkLevel($category->Category->CategoryID) == 1){
             $elements[$count]['catper'] = $category->PercentItemFound;
             $elements[$count]['catLevel'] = $category->Category->CategoryLevel;
             $elements[$count]['catName'] = $category->Category->CategoryName;
@@ -60,4 +66,12 @@ if ($response->Ack !== 'Failure') {
         $count = $count + 1;
     }
     echo json_encode($elements);
+}
+
+function checkLevel($catId){
+    $stmt = $conn->prepare("SELECT * FROM categories WHERE ebay_id = ?");
+    $stmt->bindParam(1, $catId);
+    $stmt->execute();
+    $row = $stmt->fetch();
+    return $row['level'];
 }
