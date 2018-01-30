@@ -92,7 +92,9 @@ function getCatStack($catId,$conn){
         SELECT value as 'catstack' FROM STRING_SPLIT(@name, ',');");
     $stmt->bindParam(1, $catId);
     $stmt->execute();
-    $result = $stmt->fetchAll();
-    $catNames = array_map(create_function('$o', 'return $o->catstack;'), $result);
+    $catNames = Array();
+    while ($row = $stmt->fetchRow()) {
+        $catNames[] =  $row['catstack'];  
+    }
     return $catNames;
 }
