@@ -50,7 +50,7 @@ $count = 0;
 
 if ($response->Ack !== 'Failure') {
 
-    foreach ($response->$SuggestedCategoryArray->SuggestedCategory as $category) {
+    foreach ($response->SuggestedCategoryArray->SuggestedCategory as $category) {
         $elements[$count]['catLevel'] = $category->Category->CategoryLevel;
         $elements[$count]['catName'] = $category->Category->CategoryName;
         $elements[$count]['catId'] = $category->Category->CategoryID;
