@@ -73,5 +73,6 @@ function checkLevel($catId,$conn){
     $stmt->bindParam(1, $catId);
     $stmt->execute();
     $row = $stmt->fetch();
+    echo $row['level'];
     return $row['level'];
 }
