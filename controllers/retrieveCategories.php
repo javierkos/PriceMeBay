@@ -6,11 +6,6 @@ require __DIR__.'/../vendor/autoload.php';
 
 $config = require 'configuration.php';
 
-$conn = new PDO("sqlsrv:server = tcp:pricemebay.database.windows.net,1433; Database = PriceMeBayDB", "javierkos", "GLP23ASq2");
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-error_reporting(-1);
-ini_set('display_errors', 'On');
-
 use \DTS\eBaySDK\Constants;
 use \DTS\eBaySDK\Trading\Services;
 use \DTS\eBaySDK\Trading\Types;
@@ -23,12 +18,12 @@ $service = new Services\TradingService([
     'sandbox' => false
 ]);
 
-$request = new Types\GetSuggestedCategoriesRequestType();
-
-$request->Query = filter_input(INPUT_POST, 'keywords', FILTER_SANITIZE_STRING);
+$request = new Types\GetCategoriesRequestType();
 
 $request->RequesterCredentials = new Types\CustomSecurityHeaderType();
 $request->RequesterCredentials->eBayAuthToken = $config['production']['authToken'];
+
+$request->DetailLevel = ['ReturnAll'];
 
 $request->OutputSelector = [
     'CategoryArray.Category.CategoryID',
@@ -37,7 +32,7 @@ $request->OutputSelector = [
     'CategoryArray.Category.CategoryName'
 ];
 
-$response = $service->getSuggestedCategories($request);
+$response = $service->getCategories($request);
 
 if (isset($response->Errors)) {
     foreach ($response->Errors as $error) {
@@ -53,14 +48,14 @@ if (isset($response->Errors)) {
 $elements = array();
 $count = 0;
 
+$stmt = $mysqli->prepare("INSERT INTO categories (name,parent_id,ebay_id) VALUES (?, ?, ?,?)");
 if ($response->Ack !== 'Failure') {
-    foreach ($response->SuggestedCategoryArray->SuggestedCategory as $category) {
-        $elements[$count]['catper'] = $category->PercentItemFound;
-        $elements[$count]['catLevel'] = $category->Category->CategoryLevel;
-        $elements[$count]['catName'] = $category->Category->CategoryName;
-        $elements[$count]['catId'] = $category->Category->CategoryID;
-        $elements[$count]['catParId'] = $category->Category->CategoryParentID[0];
-        $count = $count + 1;
+    foreach ($response->CategoryArray->Category as $category) {
+        if ($category->CategoryParentID[0] != NULL){
+            $sql->bindParam(1, $category->CategoryName);
+            $sql->bindParam(2, $category->CategoryParentID[0]);
+            $sql->bindParam(3, $category->CategoryID);
+            $stmt->execute();  
+        }
     }
-    echo json_encode($elements);
 }
