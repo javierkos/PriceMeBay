@@ -48,7 +48,7 @@ if (isset($response->Errors)) {
 $elements = array();
 $count = 0;
 
-if ($response->ack !== 'Failure') {
+if ($response->Ack !== 'Failure') {
 
     foreach ($response->CategoryArray->Category as $category) {
         $elements[$count]['catLevel'] = $category->CategoryLevel;
