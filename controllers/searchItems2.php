@@ -50,12 +50,13 @@ $count = 0;
 
 if ($response->Ack !== 'Failure') {
     foreach ($response->SuggestedCategoryArray->SuggestedCategory as $category) {
-        echo $category->Category->CategoryLevel;
-        $elements[$count]['catper'] = $category->PercentItemFound;
-        $elements[$count]['catLevel'] = $category->Category->CategoryLevel;
-        $elements[$count]['catName'] = $category->Category->CategoryName;
-        $elements[$count]['catId'] = $category->Category->CategoryID;
-        $elements[$count]['catParId'] = $category->Category->CategoryParentID[0];
+        if ($category->Category->CategoryLevel != null){
+            $elements[$count]['catper'] = $category->PercentItemFound;
+            $elements[$count]['catLevel'] = $category->Category->CategoryLevel;
+            $elements[$count]['catName'] = $category->Category->CategoryName;
+            $elements[$count]['catId'] = $category->Category->CategoryID;
+            $elements[$count]['catParId'] = $category->Category->CategoryParentID[0];
+        }
         $count = $count + 1;
     }
     echo json_encode($elements);
