@@ -56,7 +56,7 @@ $count = 0;
 
 if ($response->Ack !== 'Failure') {
     foreach ($response->SuggestedCategoryArray->SuggestedCategory as $category) {
-        if (checkLevel($category->Category->CategoryID) == 1){
+        if (checkLevel($category->Category->CategoryID,$conn) == 1){
             $elements[$count]['catper'] = $category->PercentItemFound;
             $elements[$count]['catLevel'] = $category->Category->CategoryLevel;
             $elements[$count]['catName'] = $category->Category->CategoryName;
@@ -68,7 +68,7 @@ if ($response->Ack !== 'Failure') {
     echo json_encode($elements);
 }
 
-function checkLevel($catId){
+function checkLevel($catId,$conn){
     $stmt = $conn->prepare("SELECT * FROM categories WHERE ebay_id = ?");
     $stmt->bindParam(1, $catId);
     $stmt->execute();
