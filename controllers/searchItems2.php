@@ -93,6 +93,6 @@ function getCatStack($catId,$conn){
     $stmt->bindParam(1, $catId);
     $stmt->execute();
     $result = $stmt->fetchAll();
-    $catNames = array_map(create_function('$o', 'return $o->catstack;'), $objects);
+    $catNames = array_map(create_function('$o', 'return $o->catstack;'), $result);
     return $catNames;
 }
