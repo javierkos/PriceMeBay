@@ -56,9 +56,10 @@ $count = 0;
 
 if ($response->Ack !== 'Failure') {
     foreach ($response->SuggestedCategoryArray->SuggestedCategory as $category) {
-        if (checkLevel($category->Category->CategoryID,$conn) == 3){
+        $level = checkLevel($category->Category->CategoryID,$conn);
+        if (level == 3){
             $elements[$count]['catper'] = $category->PercentItemFound;
-            $elements[$count]['catLevel'] = $category->Category->CategoryLevel;
+            $elements[$count]['catLevel'] = $level;
             $elements[$count]['catName'] = $category->Category->CategoryName;
             $elements[$count]['catId'] = $category->Category->CategoryID;
             $elements[$count]['catParId'] = $category->Category->CategoryParentID[0];
@@ -73,6 +74,5 @@ function checkLevel($catId,$conn){
     $stmt->bindParam(1, $catId);
     $stmt->execute();
     $row = $stmt->fetch();
-    echo $row['level'];
     return $row['level'];
 }
