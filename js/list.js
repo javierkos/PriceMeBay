@@ -4,7 +4,9 @@ currentSelPage = 1;
 
 //Open particular index for a category
 function openCat($index) {
-    $( "#contain" ).fadeOut( "slow", function() {
+    $( "#pages" ).fadeOut( "fast", function() {
+    });
+    $( "#contain" ).fadeOut( "fast", function() {
         console.log(collectedData[i]);
     });
 }
