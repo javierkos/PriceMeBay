@@ -43,7 +43,7 @@ $(document).ready(function() {
             success: function(data)
             {
                 console.log(data);
-                alert(data);
+                //alert(data);
                 //alert(data);
             var parsedData = JSON.parse(data);
             collectedData = parsedData;
