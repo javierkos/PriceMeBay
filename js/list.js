@@ -9,6 +9,13 @@ function openCat($index) {
     $( "#contain" ).fadeOut( "fast", function() {
         $("#catTitle").text("Data for "+collectedData[$index]['catName']);
         $("#per").text(collectedData[$index]['catPer']+"%");
+        if (collectedData[$index]['catPer'] >= 20){
+            $("#per").css('color', '#7FC72C');
+        }else if (collectedData[$index]['catPer'] >= 5){
+            $("#per").css('color', '#D89959');
+        }else{
+            $("#per").css('color', '#CD6060');
+        }
         $( "#cross" ).fadeIn( "fast", function() {
         });
     });
