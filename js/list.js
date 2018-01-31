@@ -7,6 +7,7 @@ function openCat($index) {
     $( "#pages" ).fadeOut( "fast", function() {
     });
     $( "#contain" ).fadeOut( "fast", function() {
+        $("#catTitle").text("Data for "+collectedData[$index]['catName']+":");
         $( "#cross" ).fadeIn( "fast", function() {
         });
     });
