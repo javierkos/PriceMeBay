@@ -23,10 +23,11 @@
 </form>
 <div class="modal"></div>
 
-<div style="" id="cross" class="catDisplay">
+<div style="display:none;" id="cross" class="catDisplay">
     <a onclick="closeCat();" class="close"></a>
     <h3 id="catTitle"></h3>
-    <p id="per" style="font-size:20px;position:absolute;left:90%;"></p>
+    <div class="tooltip" id="tooltipdiv" style="font-size:20px;opacity:1;position:absolute;left:90%;top:20px;"><span class="tooltiptext" id="tooltipspan"></span></div>
+
 
 </div>
 <ul class="pagination" id="pages" style="margin-top:80px;">

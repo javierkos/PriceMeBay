@@ -9,6 +9,8 @@ function openCat($index) {
     $( "#contain" ).fadeOut( "fast", function() {
         $("#catTitle").text("Data for "+collectedData[$index]['catName']+":");
         $("#per").text(collectedData[$index]['catPer']+"%");
+        $("#tooltipdiv").text(collectedData[$index]['catPer']+"%");
+        $("#tooltipspan").text(collectedData[i]['catRel']);
         $( "#cross" ).fadeIn( "fast", function() {
         });
     });
@@ -44,11 +46,14 @@ $(document).ready(function() {
             pageNum = 0;
                 for (i = 0; i < numElem; i++) {
                     relevance = '<div class="tooltip" style="font-size:15px;opacity:1;margin-left:20px;">'+parsedData[i]['catPer']+' %<span class="tooltiptext">Low relevance</span></div>';
+                    collectedData[i]['catRel'] = 'Low relevance';
                     if (parsedData[i]['catPer'] >= 20){
                         relevance = '<div class="tooltip" style="font-size:15px;opacity:1;margin-left:20px;">'+parsedData[i]['catPer']+' %<span class="tooltiptext">High relevance</span></div>';
+                        collectedData[i]['catRel'] = 'High relevance';
                     }
                     else if (parsedData[i]['catPer'] >= 5){
                         relevance = '<div class="tooltip" style="font-size:15px;opacity:1;margin-left:20px;">'+parsedData[i]['catPer']+' %<span class="tooltiptext">Ok relevance</span></div>';
+                        collectedData[i]['catRel'] = 'Ok relevance';
                     }
                     tempTitle = parsedData[i]['catName'];
                     if (tempTitle.length > 25)
