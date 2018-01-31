@@ -7,7 +7,7 @@ function openCat($index) {
     $( "#pages" ).fadeOut( "fast", function() {
     });
     $( "#contain" ).fadeOut( "fast", function() {
-        $("#catTitle").text("Data for "+collectedData[$index]['catName']+":");
+        $("#catTitle").text("Data for "+collectedData[$index]['catName']);
         $("#per").text(collectedData[$index]['catPer']+"%");
         $("#tooltipdiv").text(collectedData[$index]['catPer']+"%");
         $("#tooltipspan").text(catRel[$index]);
