@@ -8,6 +8,7 @@ function openCat($index) {
     });
     $( "#contain" ).fadeOut( "fast", function() {
         $("#catTitle").text("Data for "+collectedData[$index]['catName']+":");
+        $("#per").text(collectedData[$index]['catPer']+"%");
         $( "#cross" ).fadeIn( "fast", function() {
         });
     });
