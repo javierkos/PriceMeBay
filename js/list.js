@@ -5,7 +5,7 @@ $(document).ready(function() {
     url = window.location.href;
     search = unescape(url.replace(/\+/g,' ')).split("?s=")[1];
     search = search.replace(/[^\w\s]/gi, '');
-    collectedData;
+    collectedData = null;
     if (search){
         $.ajax({
             type: "POST",
