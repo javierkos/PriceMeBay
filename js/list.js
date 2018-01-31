@@ -7,7 +7,15 @@ function openCat($index) {
     $( "#pages" ).fadeOut( "fast", function() {
     });
     $( "#contain" ).fadeOut( "fast", function() {
-        console.log(collectedData[i]);
+        $( "#cross" ).fadeIn( "fast", function() {
+        });
+    });
+}
+
+function closeCat($index) {
+    $( "#cross" ).fadeOut( "fast", function() {
+        $( "#contain" ).fadeIn( "fast", function() {});
+        $( "#pages" ).fadeOut( "fast", function() {});
     });
 }
 
