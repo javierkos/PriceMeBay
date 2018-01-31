@@ -5,7 +5,7 @@ $(document).ready(function() {
     url = window.location.href;
     search = unescape(url.replace(/\+/g,' ')).split("?s=")[1];
     search = search.replace(/[^\w\s]/gi, '');
-
+    collectedData;
     if (search){
         $.ajax({
             type: "POST",
@@ -19,6 +19,7 @@ $(document).ready(function() {
                 alert(data);
                 //alert(data);
             var parsedData = JSON.parse(data);
+            collectedData = parsedData;
             numElem = parsedData.length;
             pageNum = 0;
                 for (i = 0; i < numElem; i++) {
@@ -51,7 +52,7 @@ $(document).ready(function() {
                                         +relevance+`</p>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
-                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">Analyze</a>
+                                    <a class="btn btn-success" onclick="openCat(`+i+`);">Analyze</a>
                                 </div>
                             </div>
                         </div>
@@ -76,6 +77,13 @@ $(document).ready(function() {
         currentSelPage = $(this).attr('id').slice(4);
         $("#page"+currentSelPage).show();
     });
+
+    //Open particular index for a category
+    function openCat($index) {
+        $( "#products" ).fadeOut( "slow", function() {
+            cosole.log(collectedData[i]);
+        });
+    }
     
 });
 
