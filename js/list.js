@@ -10,7 +10,7 @@ function openCat($index) {
         $("#catTitle").text("Data for "+collectedData[$index]['catName']+":");
         $("#per").text(collectedData[$index]['catPer']+"%");
         $("#tooltipdiv").text(collectedData[$index]['catPer']+"%");
-        $("#tooltipspan").text(collectedData[i]['catRel']);
+        $("#tooltipspan").text(catRel[$index]);
         $( "#cross" ).fadeIn( "fast", function() {
         });
     });
@@ -28,6 +28,7 @@ $(document).ready(function() {
     search = unescape(url.replace(/\+/g,' ')).split("?s=")[1];
     search = search.replace(/[^\w\s]/gi, '');
     collectedData = null;
+    catRel = [];
     if (search){
         $.ajax({
             type: "POST",
@@ -46,14 +47,15 @@ $(document).ready(function() {
             pageNum = 0;
                 for (i = 0; i < numElem; i++) {
                     relevance = '<div class="tooltip" style="font-size:15px;opacity:1;margin-left:20px;">'+parsedData[i]['catPer']+' %<span class="tooltiptext">Low relevance</span></div>';
-                    collectedData[i]['catRel'] = 'Low relevance';
                     if (parsedData[i]['catPer'] >= 20){
                         relevance = '<div class="tooltip" style="font-size:15px;opacity:1;margin-left:20px;">'+parsedData[i]['catPer']+' %<span class="tooltiptext">High relevance</span></div>';
-                        collectedData[i]['catRel'] = 'High relevance';
+                        catRel.push('High relevance');
                     }
                     else if (parsedData[i]['catPer'] >= 5){
                         relevance = '<div class="tooltip" style="font-size:15px;opacity:1;margin-left:20px;">'+parsedData[i]['catPer']+' %<span class="tooltiptext">Ok relevance</span></div>';
-                        collectedData[i]['catRel'] = 'Ok relevance';
+                        catRel.push('Ok relevance');
+                    }else{
+                        catRel.push('Low relevance');
                     }
                     tempTitle = parsedData[i]['catName'];
                     if (tempTitle.length > 25)
