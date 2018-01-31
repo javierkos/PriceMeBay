@@ -175,6 +175,11 @@ body.loading .modal {
 }
 
 .catDisplay {
+    -webkit-transform: translatez(0);
+    -moz-transform: translatez(0);
+    -ms-transform: translatez(0);
+    -o-transform: translatez(0);
+    transform: translatez(0);
     margin:auto;
     margin-top:100px;
     border-radius: 5px;
@@ -209,3 +214,10 @@ body.loading .modal {
     transform: rotate(-45deg);
   }
   
+  .container{
+    -webkit-transform: translatez(0);
+    -moz-transform: translatez(0);
+    -ms-transform: translatez(0);
+    -o-transform: translatez(0);
+    transform: translatez(0);
+  }

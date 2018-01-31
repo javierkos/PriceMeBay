@@ -15,7 +15,7 @@ function openCat($index) {
 function closeCat($index) {
     $( "#cross" ).fadeOut( "fast", function() {
         $( "#contain" ).fadeIn( "fast", function() {});
-        $( "#pages" ).fadeOut( "fast", function() {});
+        $( "#pages" ).fadeIn( "fast", function() {});
     });
 }
 
